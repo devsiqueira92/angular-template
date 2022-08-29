@@ -1,0 +1,37 @@
+<ng-container *ngIf="routerData$ | async as data">
+  <ng-container *ngIf="data.mode === DataMode.create; else editLabel">
+    <h1>Create</h1>
+  </ng-container>
+  <form [formGroup]="formGroup">
+    <div>
+      <app-input-field
+        controlName="id"
+        label="Id"
+        [parentForm]="formGroup"
+      ></app-input-field>
+    </div>
+    <div>
+      <app-input-field
+        controlName="categoryName"
+        label="Categoria"
+        [parentForm]="formGroup"
+      ></app-input-field>
+    </div>
+
+    <div>
+      <app-input-field
+        controlName="categoryDescription"
+        label="Descrição"
+        [parentForm]="formGroup"
+      ></app-input-field>
+    </div>
+  </form>
+</ng-container>
+<a (click)="submit()">Submit</a>
+<ng-container *ngIf="formGroup.controls.isSubmitting?.value">
+  <h1>Loading</h1>
+</ng-container>
+
+<ng-template #editLabel>
+  <h1>Edit</h1>
+</ng-template>

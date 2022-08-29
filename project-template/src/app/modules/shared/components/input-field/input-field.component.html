@@ -1,0 +1,19 @@
+<form [formGroup]="parentForm">
+  <label [for]="label">{{ label }}</label>
+  <input
+    [name]="label"
+    [id]="label"
+    [type]="type"
+    [readonly]="readonly"
+    [disabled]="disabled"
+    [formControlName]="controlName"
+    (change)="valueChanged()"
+    [ngClass]="{
+      warning:
+        displayWarning(
+          parentForm.controls[controlName],
+          isSubmitting$ | async
+        ) === FormValidationStatus.warning
+    }"
+  />
+</form>
