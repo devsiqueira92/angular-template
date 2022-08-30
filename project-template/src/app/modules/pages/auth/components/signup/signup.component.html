@@ -1,0 +1,44 @@
+<h3>Create an Account</h3>
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <app-input-field
+    type="text"
+    label="Username"
+    [control]="formGroup.get('username')"
+    controlName="username"
+    [parentForm]="formGroup"
+  ></app-input-field>
+  <app-input-field
+    type="password"
+    label="Password"
+    [control]="formGroup.get('password')"
+    controlName="password"
+    [parentForm]="formGroup"
+  ></app-input-field>
+  <app-input-field
+    type="password"
+    label="Password Confirmation"
+    [control]="formGroup.get('passwordConfirmation')"
+    controlName="passwordConfirmation"
+    [parentForm]="formGroup"
+  ></app-input-field>
+
+  <div
+    *ngIf="
+      formGroup.get('password').touched &&
+      formGroup.get('passwordConfirmation').touched &&
+      formGroup.errors
+    "
+  >
+    <p *ngIf="formGroup.errors.passwordsDontMatch">
+      Password and Password Confirmation must match
+    </p>
+    <p *ngIf="formGroup.errors.noConnection">
+      No internet connection detected, failed to sign up
+    </p>
+    <p *ngIf="formGroup.errors.unknownError">Failed to sign up</p>
+  </div>
+
+  <div>
+    <button>Submit</button>
+  </div>
+</form>

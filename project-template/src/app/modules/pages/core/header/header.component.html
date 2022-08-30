@@ -1,0 +1,6 @@
+<ng-container *ngIf="signedin$ | async">
+  <app-signout></app-signout>
+</ng-container>
+<ng-container *ngIf="!(signedin$ | async)">
+  <app-signin></app-signin>
+</ng-container>
