@@ -23,6 +23,7 @@ export class InputFieldComponent implements OnInit {
   @Input() type = 'text';
   @Input() placeholder = '';
   @Input() mask: string;
+  @Input() control: FormControl;
 
   isSubmitting$: Observable<boolean>;
 

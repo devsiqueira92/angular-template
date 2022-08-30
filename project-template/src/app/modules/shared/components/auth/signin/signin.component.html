@@ -1,0 +1,24 @@
+<h3>Sign In</h3>
+<form (ngSubmit)="onSignIn()" class="ui form" [formGroup]="formGroup">
+  <app-input-field
+    type="text"
+    label="Username"
+    [control]="formGroup.get('username')"
+    controlName="username"
+    [parentForm]="formGroup"
+  >
+  </app-input-field>
+
+  <app-input-field
+    type="password"
+    label="Password"
+    [control]="formGroup.get('password')"
+    controlName="password"
+    [parentForm]="formGroup"
+  >
+  </app-input-field>
+
+  <div>
+    <button class="ui submit button primary">Submit</button>
+  </div>
+</form>
