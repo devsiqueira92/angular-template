@@ -10,6 +10,7 @@ import {
   HttpClientModule,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
+import { AuthHttpInterceptor } from './modules/shared/interceptors/auth-http-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,9 @@ import {
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

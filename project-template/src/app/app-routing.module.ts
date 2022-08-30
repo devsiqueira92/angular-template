@@ -32,6 +32,17 @@ const routes: Routes = [
         './modules/pages/estabelecimento/estabelecimento.module'
       ).then((m) => m.EstabelecimentoModule),
   },
+
+  {
+    path: 'auth',
+    // canActivate: [isAuthenticatedGuard],
+    // data: { authDesiredValue: true, redirect: '/' },
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: "EstabelecimentoModule" */
+        './modules/pages/auth/auth.module'
+      ).then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({
